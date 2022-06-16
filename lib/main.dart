@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengo/screens/login_screen.dart';
+import 'package:greengo/screens/imageRecog_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home:  CameraApp(),
     );
   }
 }
