@@ -15,79 +15,85 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   String passWord = '';
 
-
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            centerTitle: true,
-            title: const Text(
-                'J.P Morgan Chase & Co.',
-              style:TextStyle(color: Color(0xff238c00)),
-            ),
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: const Text(
+            'J.P Morgan Chase & Co.',
+            style:TextStyle(color: Color(0xff238c00)),
           ),
-          body: Center(child: Column(children: <Widget>[
-            Container(
-                margin: const EdgeInsets.all(20),
-                child: TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40.0),
+        ),
+        body: Padding(
+            padding: EdgeInsets.all(10),
+            child: ListView(
+              children: <Widget>[
+                Container(
+
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Green Up',
+                      style: TextStyle(
+                          color: Colors.indigo,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 30),
+                    )),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: TextField(
+                    controller: nameController,
+
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xFFA5DAFF) ,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
+                      labelText: 'SID',
                     ),
-                    labelText: 'SSO ID',
                   ),
-                  onChanged: (text) {
-                    setState(() {
-                      userName = text;
-                      //you can access nameController in its scope to get
-                      // the value of text entered as shown below
-                      //fullName = nameController.text;
-                    });
-                  },
-                )),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: Text(userName),
-            ),
-            Container(
-                margin: const EdgeInsets.all(20),
-                child: TextField(
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40.0),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  child: TextField(
+                    obscureText: true,
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
+                      labelText: 'Password',
                     ),
-                    labelText: 'Password',
                   ),
-                  onChanged: (text) {
-                    setState(() {
-                      passWord = text;
-                      //you can access nameController in its scope to get
-                      // the value of text entered as shown below
-                      //fullName = nameController.text;
-                    });
+                ),
+                FlatButton(
+                  onPressed: (){
+                    //forgot password screen
                   },
-                )),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: Text(passWord),
-            ),
-            Container(
-                height: 50,
-                padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                child: ElevatedButton(
-                  child: const Text('Login'),
-                  onPressed: () {
-                    print(nameController.text);
-                    print(passwordController.text);
-                  },
-                )
-            ),
-          ]))),
-    );
+                  textColor: Colors.indigo,
+                  child: const Text('Forgot Password'),
+                ),
+                Container(
+                    height: 50,
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    // ignore: deprecated_member_use
+                    child: RaisedButton(
+                      textColor: Colors.white,
+                      color: Colors.indigo,
+
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+                      child: const Text('LOGIN'),
+                      onPressed: () {
+                        print(nameController.text);
+                        print(passwordController.text);
+                      },
+                    )),
+
+              ],
+            )));
   }
 }
