@@ -31,7 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
             child: ListView(
               children: <Widget>[
                 Container(
-
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
                     child: Text(
@@ -83,7 +82,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: RaisedButton(
                       textColor: Colors.white,
                       color: Colors.indigo,
-
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40)),
                       child: const Text('LOGIN'),
