@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.ac_unit),
+            color: Colors.blue,
+          )
+        ],
+      ),
+      body: Column(
+        children: [
+          Text('Welcome back'),
+          RichText(text: TextSpan(text: 'Jaime'))
+        ],
+      ),
+    );
+  }
+}
