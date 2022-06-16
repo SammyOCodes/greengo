@@ -16,7 +16,7 @@ class MyBullet extends StatelessWidget{
       height: 10.0,
       width: 10.0,
       decoration: new BoxDecoration(
-        color: Colors.black,
+        color: Color(0xFF2DD15B),
         shape: BoxShape.circle,
       ),
     );
@@ -31,21 +31,55 @@ class _TipsScreenState extends State<TipsScreen>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Insert App Bar Here"),
-      ),
-      body: Column(
+      body:
+      Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
+
         children: [
-          Text(
-            'Tip of the Day',
-            textAlign: TextAlign.center,
+          Container(
+            color: Colors.white70,
+            height: 50,
+            width: 250,
+            margin: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(3.0),
+            child: Text(
+              'Search for more tips & faqs...',
+              textAlign: TextAlign.center,
+            ),
           ),
-          Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            textAlign: TextAlign.center,
+          Container(
+            padding: const EdgeInsets.all(15.0),
+            width: 350,
+            height: 90,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Tip of the Day',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.white,
+                  )
+                ),
+                Text(
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                  textAlign: TextAlign.center,
+                    softWrap: true,
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      color: Colors.white,
+                    )
+                ),
+              ],
+            ),
+            decoration: BoxDecoration(
+              color: Color(0xFF0071BF),
+            ),
           ),
+
           Text(
             'FAQS',
             textAlign: TextAlign.center,
@@ -65,6 +99,7 @@ class _TipsScreenState extends State<TipsScreen>{
         ],
 
       ),
+
     );
   }
 }
