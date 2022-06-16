@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:greengo/screens/analytics_screen.dart';
 import 'package:greengo/screens/home_screen.dart';
 import 'package:greengo/screens/login_screen.dart';
 import 'package:greengo/screens/authentication_screen.dart';
 
-import 'package:provider/provider.dart';           // new
+import 'package:provider/provider.dart'; // new
 
 void main() {
   runApp(
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFE3F4FF)),
-      home: HomePage(),
+      home: AnalyticsScreen(),
     );
   }
 }
