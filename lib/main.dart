@@ -1,72 +1,182 @@
 import 'package:flutter/material.dart';
-import 'package:greengo/screens/login_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'src/widgets.dart';
+
+import 'package:firebase_auth/firebase_auth.dart'; // new
+import 'package:firebase_core/firebase_core.dart'; // new
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';           // new
+
+// import 'firebase_options.dart';                    // new
+import 'src/authentication.dart';                  // new
+import 'src/widgets.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ApplicationState(),
+      builder: (context, _) => App(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Firebase Meetup',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        buttonTheme: Theme.of(context).buttonTheme.copyWith(
+          highlightColor: Colors.deepPurple,
+        ),
+        primarySwatch: Colors.deepPurple,
+        textTheme: GoogleFonts.robotoTextTheme(
+          Theme.of(context).textTheme,
+        ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginScreen(),
+      home: const HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: const Text('Firebase Meetup'),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: ListView(
+        children: <Widget>[
+          Image.asset('assets/codelab.png'),
+          const SizedBox(height: 8),
+          const IconAndDetail(Icons.calendar_today, 'October 30'),
+          const IconAndDetail(Icons.location_city, 'San Francisco'),
+          // New FB Auth Code
+          Consumer<ApplicationState>(
+            builder: (context, appState, _) => Authentication(
+              email: appState.email,
+              loginState: appState.loginState,
+              startLoginFlow: appState.startLoginFlow,
+              verifyEmail: appState.verifyEmail,
+              signInWithEmailAndPassword: appState.signInWithEmailAndPassword,
+              cancelRegistration: appState.cancelRegistration,
+              registerAccount: appState.registerAccount,
+              signOut: appState.signOut,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+          ),
+          // New FB Auth Code
+          const Divider(
+            height: 8,
+            thickness: 1,
+            indent: 8,
+            endIndent: 8,
+            color: Colors.grey,
+          ),
+          const Header("What we'll be doing"),
+          const Paragraph(
+            'Join us for a day full of Firebase Workshops and Pizza!',
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+
+// FIREBASE AUTH CODE
+class ApplicationState extends ChangeNotifier {
+  ApplicationState() {
+    init();
+  }
+
+  Future<void> init() async {
+    await Firebase.initializeApp();
+
+    FirebaseAuth.instance.userChanges().listen((user) {
+      if(user != null) {
+        _loginState = ApplicationLoginState.loggedIn;
+      } else {
+        _loginState = ApplicationLoginState.loggedOut;
+      }
+      notifyListeners();
+    });
+  }
+
+  ApplicationLoginState _loginState = ApplicationLoginState.loggedOut;
+  ApplicationLoginState get loginState => _loginState;
+
+  String? _email;
+  String? get email => _email;
+
+  void startLoginFlow() {
+    _loginState = ApplicationLoginState.emailAddress;
+    notifyListeners();
+  }
+
+  Future<void> verifyEmail(
+      String email,
+      void Function(FirebaseAuthException e) errorCallback,
+      ) async {
+    try {
+      var methods =
+      await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+      if (methods.contains('password')) {
+        _loginState = ApplicationLoginState.password;
+      } else {
+        _loginState = ApplicationLoginState.register;
+      }
+      _email = email;
+      notifyListeners();
+    } on FirebaseAuthException catch (e) {
+      errorCallback(e);
+    }
+  }
+
+  Future<void> signInWithEmailAndPassword(
+      String email,
+      String password,
+      void Function(FirebaseAuthException e) errorCallback,
+      ) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      errorCallback(e);
+    }
+  }
+
+  void cancelRegistration() {
+    _loginState = ApplicationLoginState.emailAddress;
+    notifyListeners();
+  }
+
+  Future<void> registerAccount(
+      String email,
+      String displayName,
+      String password,
+      void Function(FirebaseAuthException e) errorCallback) async {
+    try {
+      var credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      await credential.user!.updateDisplayName(displayName);
+    } on FirebaseAuthException catch (e) {
+      errorCallback(e);
+    }
+  }
+
+  void signOut() {
+    FirebaseAuth.instance.signOut();
+  }
+}
+
+// END FIREBASE AUTH CODE

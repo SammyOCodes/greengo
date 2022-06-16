@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "791468697149",
+    "project_id": "green-go-database",
+    "storage_bucket": "green-go-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791468697149:android:69c627d622f7a5bd706c54",
+        "android_client_info": {
+          "package_name": "com.example.greengo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791468697149-9j52mkudlr2utrjg7baj9revfpcbn579.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLKBnKrpNqCxccpkKeSPtigzCLW5gwNiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791468697149-9j52mkudlr2utrjg7baj9revfpcbn579.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
