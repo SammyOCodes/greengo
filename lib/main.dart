@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:greengo/screens/home_screen.dart';
 import 'package:greengo/screens/login_screen.dart';
+import 'package:greengo/screens/authentication_screen.dart';
+
+import 'package:provider/provider.dart';           // new
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ApplicationState(),
+      builder: (context, _) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFE3F4FF)),
-      home: HomeScreen(),
+      home: HomePage(),
     );
   }
 }
