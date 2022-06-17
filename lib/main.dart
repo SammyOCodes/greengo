@@ -3,6 +3,7 @@ import 'package:greengo/screens/analytics_screen.dart';
 import 'package:greengo/screens/home_screen.dart';
 import 'package:greengo/screens/login_screen.dart';
 import 'package:greengo/screens/authentication_screen.dart';
+import 'package:greengo/screens/navbar.dart';
 
 import 'package:provider/provider.dart'; // new
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFE3F4FF)),
-      home: AnalyticsScreen(),
+      home: Navbar(),
     );
   }
 }
