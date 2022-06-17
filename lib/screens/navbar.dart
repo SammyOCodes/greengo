@@ -5,6 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:greengo/screens/home_screen.dart';
 import 'package:greengo/screens/analytics_screen.dart';
+import 'package:greengo/screens/imageRecog_screen.dart';
 import 'package:greengo/screens/login_screen.dart';
 import 'package:greengo/screens/authentication_screen.dart';
 import 'package:greengo/screens/navbar.dart';
@@ -19,13 +20,18 @@ class Navbar extends StatefulWidget {
 class _NavbarState extends State<Navbar> {
   int _selectedScreen = 0;
 
-  final List<Widget> _widgetOptions = [HomeScreen(), AnalyticsScreen(), HomeScreen(), HomeScreen(), HomePage()];
+  final List<Widget> _widgetOptions = [
+    HomeScreen(),
+    AnalyticsScreen(),
+    CameraApp(),
+    HomeScreen(),
+    HomePage()
+  ];
 
   void _navigateBottomBar(int index) {
     setState(() {
       _selectedScreen = index;
     });
-
   }
 
   @override
@@ -36,7 +42,7 @@ class _NavbarState extends State<Navbar> {
       ),
       bottomNavigationBar: Container(
         color: Color(0xFF154C8A),
-        child: Padding (
+        child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
           child: GNav(
             backgroundColor: Color(0xFF154C8A),
@@ -44,7 +50,7 @@ class _NavbarState extends State<Navbar> {
             activeColor: Color(0xFF2DD15B),
             tabBackgroundColor: Color(0xFF154C8A),
             gap: 5,
-            onTabChange: (index){
+            onTabChange: (index) {
               _navigateBottomBar(index);
             },
             padding: EdgeInsets.all(16),
@@ -55,7 +61,7 @@ class _NavbarState extends State<Navbar> {
               ),
               GButton(
                 icon: Icons.bar_chart_rounded,
-                text: 'Leaderboard',
+                text: 'Ranks',
               ),
               GButton(
                 icon: Icons.camera_alt_rounded,
@@ -66,7 +72,7 @@ class _NavbarState extends State<Navbar> {
                 text: 'Tips',
               ),
               GButton(
-                icon:Icons.logout_rounded,
+                icon: Icons.logout_rounded,
                 text: 'Logout',
               ),
             ],
