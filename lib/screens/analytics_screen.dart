@@ -17,56 +17,110 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
     ScoreGraph(
       building: "Building A",
       score: 100,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+      barColor: charts.ColorUtil.fromDartColor(Color(0xFF2DD15B)),
     ),
     ScoreGraph(
       building: "Building B",
       score: 30,
-      barColor: charts.ColorUtil.fromDartColor(Colors.blue),
+      barColor: charts.ColorUtil.fromDartColor(Color(0xFF154C8A)),
     ),
     ScoreGraph(
       building: "Building C",
       score: 120,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+      barColor: charts.ColorUtil.fromDartColor(Color(0xFF2DD15B)),
     ),
     ScoreGraph(
       building: "Building D",
       score: 70,
-      barColor: charts.ColorUtil.fromDartColor(Colors.blue),
+      barColor: charts.ColorUtil.fromDartColor(Color(0xFF154C8A)),
     ),
     ScoreGraph(
       building: "Building F",
       score: 300,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+      barColor: charts.ColorUtil.fromDartColor(Color(0xFF2DD15B)),
     ),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(backgroundColor: Colors.transparent, elevation: 0, actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.ac_unit),
-          color: Colors.black,
-        ),
-      ]),
+
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Company'),
-          Text('Leaderboard'),
-          Text('Location: PlANO, TX'),
           SizedBox(
-            height: 5,
+            height: 36
+          ),
+          Text(
+            '   Company',
+            style: TextStyle(
+              fontSize: 40,
+              color: Color(0xFF154C8A),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            '   Leaderboard',
+            style: TextStyle(
+              fontSize: 40,
+              color: Color(0xFF154C8A),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            '      Location: PLANO, TX',
+            style: TextStyle(
+              color: Color(0xFF154C8A),
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          SizedBox(
+            height: 15,
           ),
           Container(
-            color: Colors.greenAccent,
+            color: Color(0xFF026e21),
             height: 20,
+            width: 1000,
+            alignment: Alignment.center,
+            child: Text(
+              'Building F is currently in first place',
+              style: TextStyle(
+                color: Colors.white
+              ),
+            ),
           ),
-          Container(
-            height: 250,
-            width: 375,
-            child: ScoreChart(data: data,)
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 12.5,
+              ),
+              Container(
+                height: 300,
+                width: 375,
+                alignment: Alignment.center,
+                child: ScoreChart(data: data,)
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 25
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 70
+              ),
+              Image.asset(
+                'lib/assets/Home-Asset.png',
+                // width: 250,
+                height: 185,
+              )
+            ],
           )
         ],
 
