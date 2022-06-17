@@ -16,64 +16,116 @@ class CameraAppState extends State<CameraApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Capturing images'),
-        ),
+        backgroundColor: const Color(0xEBF8FF),
         body: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Container(
+                  child: const Text(
+                    'Not sure if something is recyclable?',
+                    style: TextStyle(fontWeight: FontWeight.bold,color: Color(0xff154C8A),fontSize: 20),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Container(
+                  child: const Text(
+                    'Not sure if something is recyclable?',
+                    style: TextStyle(color: Color(0xff154C8A),fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(height: 10),
                 if (imageFile != null)
                   Container(
-                    width: 640,
-                    height: 480,
+                    width: 338,
+                    height: 360,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Colors.white,
                         image: DecorationImage(image: FileImage(imageFile!)),
-                        border: Border.all(width: 8, color: Colors.black12),
+                        border: Border.all(width: 8, color: Colors.transparent),
                         borderRadius: BorderRadius.circular(12.0)),
-                    child: const Text(
-                      'Image should appear here',
-                      style: TextStyle(fontSize: 26),
-                    ),
+
                   )
                 else
                   Container(
-                    width: 640,
-                    height: 480,
+                    width: 338,
+                    height: 360,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        color: Colors.blue,
-                        border: Border.all(width: 8, color: Colors.black12),
+                        color: Colors.white,
+                        border: Border.all(width: 5, color: Colors.transparent),
                         borderRadius: BorderRadius.circular(12.0)),
                     child: const Text(
-                      'Image should appear here',
-                      style: TextStyle(fontSize: 26),
+                      'Upload your '
+                          '            picture here',
+                      style: TextStyle(fontWeight: FontWeight.bold,color: Color(0xff154C8A),fontSize: 32),
+                        textAlign: TextAlign.center,
+                    ),
+
+                  ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  width: 181, height: 36,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(const Color(0xff2DD15B)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                    ),
+                    onPressed: () => getImage(source: ImageSource.camera),
+                    child: const Text(
+                      'scan image',
+                      style: TextStyle(fontSize: 18),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                const SizedBox(
-                  height: 20,
                 ),
+                const SizedBox(height: 20),
                 Row(
-                  children: [
-                    Expanded(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                    SizedBox(
+                        width: 162, height: 111,
                         child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(const Color(0xff0071BF)),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                          ),
                       onPressed: () => getImage(source: ImageSource.camera),
                       child: const Text(
-                        'Capture Image',
+                        'take photo',
                         style: TextStyle(fontSize: 18),
+                        textAlign: TextAlign.center,
                       ),
                     )),
                     const SizedBox(width: 20),
-                    Expanded(
+                    SizedBox(
+                      width: 162, height: 111,
                         child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(const Color(0xff0071BF)),
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                            ),
                             onPressed: () =>
                                 getImage(source: ImageSource.gallery),
                             child: const Text(
-                              'Select Image',
+                              'add from camera roll',
                               style: TextStyle(fontSize: 18),
+                              textAlign: TextAlign.center,
                             )))
                   ],
                 )
