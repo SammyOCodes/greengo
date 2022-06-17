@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "274728567561",
+    "project_id": "greengo-db",
+    "storage_bucket": "greengo-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274728567561:android:033b1ba00ced35bc4449d8",
+        "android_client_info": {
+          "package_name": "com.example.greengo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274728567561-ennk73ecqiokh7rlepc88s3f3j3soaag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk2B-x13hU7kmrFwf491yJUb8AFXpHHbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274728567561-ennk73ecqiokh7rlepc88s3f3j3soaag.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "274728567561-n26i565kaumul4m59v7tq50b6i0641j9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.greengo"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274728567561:android:71b935f41876b2e04449d8",
+        "android_client_info": {
+          "package_name": "com.green.greengo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274728567561-ennk73ecqiokh7rlepc88s3f3j3soaag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk2B-x13hU7kmrFwf491yJUb8AFXpHHbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274728567561-ennk73ecqiokh7rlepc88s3f3j3soaag.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "274728567561-n26i565kaumul4m59v7tq50b6i0641j9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.greengo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
