@@ -50,3 +50,8 @@ app.*.map.json
 Scripts/
 lib/site-packages/
 pyvenv.cfg
+
+#mldataset
+lib/mlModel/waste-data/
+lib/ML/input/
+lib/mlModel/
