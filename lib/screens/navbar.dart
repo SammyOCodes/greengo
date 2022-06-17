@@ -8,6 +8,7 @@ import 'package:greengo/screens/analytics_screen.dart';
 import 'package:greengo/screens/imageRecog_screen.dart';
 import 'package:greengo/screens/authentication_screen.dart';
 import 'package:greengo/screens/navbar.dart';
+import 'package:greengo/screens/tips_screen.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _NavbarState extends State<Navbar> {
     HomeScreen(),
     AnalyticsScreen(),
     CameraApp(),
-    HomeScreen(),
+    TipsScreen(),
     HomePage()
   ];
 
