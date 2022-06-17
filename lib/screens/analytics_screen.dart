@@ -43,13 +43,10 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 36
-          ),
+          SizedBox(height: 36),
           Text(
             '   Company',
             style: TextStyle(
@@ -84,9 +81,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
             alignment: Alignment.center,
             child: Text(
               'Building F is currently in first place',
-              style: TextStyle(
-                color: Colors.white
-              ),
+              style: TextStyle(color: Colors.white),
             ),
           ),
           SizedBox(
@@ -99,31 +94,27 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
                 width: 12.5,
               ),
               Container(
-                height: 300,
-                width: 375,
-                alignment: Alignment.center,
-                child: ScoreChart(data: data,)
-              ),
+                  height: 300,
+                  width: 375,
+                  alignment: Alignment.center,
+                  child: ScoreChart(
+                    data: data,
+                  )),
             ],
           ),
-          SizedBox(
-            height: 25
-          ),
+          SizedBox(height: 25),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                width: 70
-              ),
+              SizedBox(width: 70),
               Image.asset(
                 'lib/assets/Home-Asset.png',
                 // width: 250,
-                height: 185,
+                height: 182,
               )
             ],
           )
         ],
-
       ),
     );
   }
