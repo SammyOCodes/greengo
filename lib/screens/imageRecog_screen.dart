@@ -25,14 +25,17 @@ class CameraAppState extends State<CameraApp> {
                 Container(
                   child: const Text(
                     'Not sure if something is recyclable?',
-                    style: TextStyle(fontWeight: FontWeight.bold,color: Color(0xff154C8A),fontSize: 20),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff154C8A),
+                        fontSize: 20),
                     textAlign: TextAlign.center,
                   ),
                 ),
                 Container(
                   child: const Text(
                     'Not sure if something is recyclable?',
-                    style: TextStyle(color: Color(0xff154C8A),fontSize: 16),
+                    style: TextStyle(color: Color(0xff154C8A), fontSize: 16),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -47,7 +50,6 @@ class CameraAppState extends State<CameraApp> {
                         image: DecorationImage(image: FileImage(imageFile!)),
                         border: Border.all(width: 8, color: Colors.transparent),
                         borderRadius: BorderRadius.circular(12.0)),
-
                   )
                 else
                   Container(
@@ -60,25 +62,43 @@ class CameraAppState extends State<CameraApp> {
                         borderRadius: BorderRadius.circular(12.0)),
                     child: const Text(
                       'Upload your '
-                          '            picture here',
-                      style: TextStyle(fontWeight: FontWeight.bold,color: Color(0xff154C8A),fontSize: 32),
-                        textAlign: TextAlign.center,
+                      '            picture here',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff154C8A),
+                          fontSize: 32),
+                      textAlign: TextAlign.center,
                     ),
-
                   ),
                 const SizedBox(height: 30),
                 SizedBox(
-                  width: 181, height: 36,
+                  width: 181,
+                  height: 36,
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(const Color(0xff2DD15B)),
+                      backgroundColor:
+                          MaterialStateProperty.all(const Color(0xff2DD15B)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
                     ),
-                    onPressed: () => getImage(source: ImageSource.camera),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: Text('The item is recyclable'),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text('ok'))
+                          ],
+                        ),
+                      );
+                    },
                     child: const Text(
                       'scan image',
                       style: TextStyle(fontSize: 18),
@@ -88,33 +108,39 @@ class CameraAppState extends State<CameraApp> {
                 ),
                 const SizedBox(height: 20),
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
                     SizedBox(
-                        width: 162, height: 111,
+                        width: 162,
+                        height: 111,
                         child: ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(const Color(0xff0071BF)),
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            backgroundColor: MaterialStateProperty.all(
+                                const Color(0xff0071BF)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
                           ),
-                      onPressed: () => getImage(source: ImageSource.camera),
-                      child: const Text(
-                        'take photo',
-                        style: TextStyle(fontSize: 18),
-                        textAlign: TextAlign.center,
-                      ),
-                    )),
+                          onPressed: () => getImage(source: ImageSource.camera),
+                          child: const Text(
+                            'take photo',
+                            style: TextStyle(fontSize: 18),
+                            textAlign: TextAlign.center,
+                          ),
+                        )),
                     const SizedBox(width: 20),
                     SizedBox(
-                      width: 162, height: 111,
+                        width: 162,
+                        height: 111,
                         child: ElevatedButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(const Color(0xff0071BF)),
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              backgroundColor: MaterialStateProperty.all(
+                                  const Color(0xff0071BF)),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
