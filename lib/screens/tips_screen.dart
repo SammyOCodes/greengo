@@ -9,61 +9,106 @@ class TipsScreen extends StatefulWidget {
   State<TipsScreen> createState() => _TipsScreenState();
 }
 
-class MyBullet extends StatelessWidget{
+class _TipsScreenState extends State<TipsScreen> {
   @override
-  Widget build(BuildContext context){
-    return new Container(
-      height: 10.0,
-      width: 10.0,
-      decoration: new BoxDecoration(
-        color: Colors.black,
-        shape: BoxShape.circle,
-      ),
-    );
-  }
-}
-/*const SizedBox(
-            width: 389.0,
-            height: 300.0,
-            child: Card(child: Text('Hello World!')),
-          ) */
-class _TipsScreenState extends State<TipsScreen>{
-  @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Insert App Bar Here"),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add_alert))],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            'Tip of the Day',
-            textAlign: TextAlign.center,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+            child: TextField(
+              decoration: InputDecoration(
+                  filled: true,
+                  hintStyle: TextStyle(
+                      color: Color(0xFF4D86C6), fontWeight: FontWeight.bold),
+                  hintText: 'search for more tips & faqs...',
+                  fillColor: Colors.white,
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(color: Colors.transparent))),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            color: Color(0xFF0071BF),
+            height: 120,
+            width: 500,
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Tip of The Day',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.white),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                'Not everything all items belong in the recycling bin.\n                       Please consider recycling ',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.white,
+                ),
+              ),
+            ]),
+          ),
+          SizedBox(
+            height: 25,
           ),
           Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-            textAlign: TextAlign.center,
+            'FAQs',
+            style: TextStyle(
+                color: Color(0xFF154C8A),
+                fontSize: 35,
+                fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 10,
           ),
           Text(
-            'FAQS',
-            textAlign: TextAlign.center,
+            'What items can be recycled around campus?',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xFF154C8A)),
           ),
-          new ListTile(
-            leading: new MyBullet(),
-            title: new Text('Tip Number 1'),
+          SizedBox(
+            height: 10,
           ),
-          new ListTile(
-            leading: new MyBullet(),
-            title: new Text('Tip Number 2'),
+          Text(
+            'How do I check my contributions?',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xFF154C8A)),
           ),
-          new ListTile(
-            leading: new MyBullet(),
-            title: new Text('Tip Number 3'),
+          SizedBox(
+            height: 10,
           ),
+          Text(
+            'Where can I find recycling locations?',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xFF154C8A)),
+          ),
+          SizedBox(
+            height: 13,
+          ),
+          Image(
+            image: AssetImage('lib/assets/FAQ-Assets.png'),
+            height: 240,
+          )
         ],
-
       ),
     );
   }
