@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Color(0xFF154C8A),
                         )),
                     Text(
-                      '20 lbs',
+                      '3 lbs',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Personal Goal Recycling Goal of 400 lbs',
+                'Building\'s Goal of Recycling Goal of 400 lbs',
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Color(0xFF154C8A)),
               ),
