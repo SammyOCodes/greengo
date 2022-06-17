@@ -12,25 +12,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.ac_unit),
-            color: Colors.blue,
-            iconSize: 40,
-          )
-        ],
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(
+            height: 70,
+          ),
           Text(
             '   Welcome Back',
             style: TextStyle(
@@ -114,18 +104,30 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Personal Goal Recycling Goal 400 lbs',
+                'Personal Goal Recycling Goal of 400 lbs',
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: Color(0xFF154C8A)),
               ),
             ],
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                image: AssetImage('lib/assets/walking_green.png'),
+                height: 150,
+              ),
+            ],
+          )
         ],
       ),
     );
