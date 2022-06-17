@@ -48,17 +48,21 @@ class Authentication extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (loginState) {
       case ApplicationLoginState.loggedOut:
-        return Row(
+        return Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 24, bottom: 8),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40)),
-                onPressed: () {
-                  startLoginFlow();
-                },
-                child: const Text('Sign In'),
+              padding: const EdgeInsets.only(left: 24, bottom: 8, top: 128),
+              child: Container(
+                width: 300,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(width: 1.0, color: Colors.black),
+                  ),
+                  onPressed: () {
+                    startLoginFlow();
+                  },
+                  child: const Text('Sign In'),
+                ),
               ),
             ),
           ],
@@ -95,15 +99,21 @@ class Authentication extends StatelessWidget {
           },
         );
       case ApplicationLoginState.loggedIn:
-        return Row(
+        return Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 24, bottom: 8),
-              child: StyledButton(
-                onPressed: () {
-                  signOut();
-                },
-                child: const Text('LOGOUT'),
+              padding: const EdgeInsets.fromLTRB(8.0, 128.0, 8.0, 0.0),
+              child: Container(
+                width: 300,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(width: 1.0, color: Colors.black),
+                  ),
+                  onPressed: () {
+                    signOut();
+                  },
+                  child: const Text('Sign Out'),
+                ),
               ),
             ),
           ],
@@ -168,9 +178,8 @@ class _EmailFormState extends State<EmailForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Header('Sign in with SID'),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(8.0, 128.0, 8.0, 0.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -186,7 +195,7 @@ class _EmailFormState extends State<EmailForm> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40.0),
                       ),
-                      hintText: 'Enter your SID',
+                      hintText: 'Enter your email address',
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -268,7 +277,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   child: TextFormField(
                     controller: _emailController,
                     decoration: const InputDecoration(
-                      hintText: 'Enter your email',
+                      hintText: 'Enter your email address',
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
