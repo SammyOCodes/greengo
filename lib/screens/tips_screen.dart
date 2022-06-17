@@ -13,14 +13,12 @@ class _TipsScreenState extends State<TipsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add_alert))],
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(
+            height: 70,
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
             child: TextField(
@@ -102,11 +100,11 @@ class _TipsScreenState extends State<TipsScreen> {
                 fontWeight: FontWeight.bold, color: Color(0xFF154C8A)),
           ),
           SizedBox(
-            height: 13,
+            height: 30,
           ),
           Image(
             image: AssetImage('lib/assets/FAQ-Assets.png'),
-            height: 240,
+            height: 270,
           )
         ],
       ),
