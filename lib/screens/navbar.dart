@@ -5,7 +5,6 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:greengo/screens/home_screen.dart';
 import 'package:greengo/screens/analytics_screen.dart';
-import 'package:greengo/screens/login_screen.dart';
 import 'package:greengo/screens/authentication_screen.dart';
 import 'package:greengo/screens/navbar.dart';
 

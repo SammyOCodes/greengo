@@ -52,7 +52,9 @@ class Authentication extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 24, bottom: 8),
-              child: StyledButton(
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40)),
                 onPressed: () {
                   startLoginFlow();
                 },
@@ -141,7 +143,7 @@ class Authentication extends StatelessWidget {
               },
               child: const Text(
                 'OK',
-                style: TextStyle(color: Colors.deepPurple),
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
@@ -166,7 +168,7 @@ class _EmailFormState extends State<EmailForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Header('Sign in with email'),
+        const Header('Sign in with SID'),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Form(
@@ -178,8 +180,13 @@ class _EmailFormState extends State<EmailForm> {
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: TextFormField(
                     controller: _controller,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter your email',
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xFFA5DAFF) ,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
+                      hintText: 'Enter your SID',
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -195,18 +202,20 @@ class _EmailFormState extends State<EmailForm> {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 16.0, horizontal: 30),
-                      child: StyledButton(
+                      child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                             widget.callback(_controller.text);
                           }
                         },
-                        child: const Text('NEXT'),
+                        child: const Text('NEXT') ,
+                          ),
                       ),
-                    ),
-                  ],
+                    ],
                 ),
-              ],
+                ],
             ),
           ),
         ),
@@ -363,6 +372,12 @@ class _PasswordFormState extends State<PasswordForm> {
     return Column(
       children: [
         const Header('Sign in'),
+        Text('GreenUp!',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 48,
+          color: Color(0xFF008826),
+        ),),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Form(
@@ -370,26 +385,48 @@ class _PasswordFormState extends State<PasswordForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: TextFormField(
                     controller: _emailController,
                     decoration: const InputDecoration(
+                      fillColor: Color(0xFFA5DAFF),
+                      filled: true,
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all((Radius.circular(40.0))),
+                          borderSide: BorderSide(color: Color(0xFFA5DAFF)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all((Radius.circular(40.0))),
+                          borderSide: BorderSide(color: Color(0xFFA5DAFF)),
+                      ),
                       hintText: 'Enter your email',
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Enter your email address to continue';
+                        return 'Enter your SID address to continue';
                       }
                       return null;
                     },
                   ),
                 ),
+                SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: TextFormField(
                     controller: _passwordController,
                     decoration: const InputDecoration(
+                      fillColor: Color(0xFFA5DAFF),
+                      filled: true,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all((Radius.circular(40.0))),
+                        borderSide: BorderSide(color: Color(0xFFA5DAFF)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all((Radius.circular(40.0))),
+                          borderSide: BorderSide(color: Color(0xFFA5DAFF)),
+                      ),
                       hintText: 'Password',
                     ),
                     obscureText: true,
@@ -404,10 +441,15 @@ class _PasswordFormState extends State<PasswordForm> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(width: 16),
-                      StyledButton(
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFF008826),
+                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40))),
+
+                        ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             widget.login(
@@ -416,7 +458,17 @@ class _PasswordFormState extends State<PasswordForm> {
                             );
                           }
                         },
-                        child: const Text('SIGN IN'),
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(50 , 15 , 50 , 15),
+                          child: Text(
+                              'login',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+
+                          ),
+                        ),
                       ),
                       const SizedBox(width: 30),
                     ],
